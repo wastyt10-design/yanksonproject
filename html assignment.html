@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Assignment — Forms and Controls</title>
+  <style>
+    :root { color-scheme: light; --ink: #182433; --muted: #596879; --paper: #fff; --background: #edf2f7; --line: #d8e0e9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 32px 18px 56px; background: var(--background); color: var(--ink); font: 16px/1.5 Arial, Helvetica, sans-serif; }
+    main { max-width: 880px; margin: 0 auto; }
+    header { margin-bottom: 28px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+    header p { margin: 0; color: var(--muted); }
+    form { margin: 0; }
+    .form-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px 22px; margin: 20px 0; box-shadow: 0 3px 12px #1d355710; }
+    .form-card h2 { margin: 0; font-size: 1.25rem; }
+    .form-card output { display: block; margin: 10px 0 16px; font-weight: 700; font-size: 1.1rem; }
+    .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 22px; }
+    label, .field-title { display: block; font-weight: 600; margin-bottom: 6px; }
+    input[type="text"], select { width: 100%; min-height: 42px; border: 1px solid #aebbc9; border-radius: 6px; background: #fff; color: var(--ink); padding: 9px 11px; font: inherit; }
+    select[size] { min-height: 116px; }
+    .radio-group { display: flex; gap: 20px; align-items: center; min-height: 42px; }
+    .radio-group label { display: inline-flex; align-items: center; gap: 7px; margin: 0; font-weight: 400; }
+    input[type="radio"] { accent-color: #245bb5; width: 17px; height: 17px; }
+    hr { border: 0; margin: 25px 0; }
+    .actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 26px; }
+    button { border: 0; border-radius: 7px; padding: 11px 22px; font: 700 1rem Arial, sans-serif; cursor: pointer; }
+    button[type="submit"] { color: white; background: #245bb5; }
+    button[type="reset"] { color: #243348; background: #dce5ef; }
+    button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #78a9ff; outline-offset: 2px; }
+    @media (max-width: 600px) { body { padding: 22px 12px 40px; } .form-card { padding: 17px 15px 19px; } .fields { grid-template-columns: 1fr; gap: 13px; } .actions { justify-content: stretch; } .actions button { flex: 1; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>HTML Assignment</h1>
+      <p>Forms, horizontal rules, output elements and common form controls</p>
+    </header>
+    <form action="#" method="get">
+      <section class="form-card" aria-labelledby="form1-title">
+        <h2 id="form1-title">Form #1</h2><output style="color:#c0392b" for="first-name">Personal details</output>
+        <div class="fields">
+          <div><label for="first-name">First Name</label><input id="first-name" name="firstName" type="text" placeholder="Enter your first name"></div>
+          <div><span class="field-title">Are these details correct?</span><div class="radio-group"><label><input type="radio" name="answer1" value="yes"> Yes</label><label><input type="radio" name="answer1" value="no"> No</label></div></div>
+          <div><label for="list1">Title (scroll to choose)</label><select id="list1" name="title" size="4"><option>Ms</option><option>Mr</option><option>Mx</option><option>Dr</option><option>Professor</option></select></div>
+          <div><label for="drop1">Preferred contact method</label><select id="drop1" name="contact"><option>Email</option><option>Phone</option><option>Text message</option><option>Post</option></select></div>
+        </div>
+      </section>
+      <hr color="#e74c3c" size="5">
+      <section class="form-card" aria-labelledby="form2-title">
+        <h2 id="form2-title">Form #2</h2><output style="color:#8e44ad" for="family-name">Family details</output>
+        <div class="fields">
+          <div><label for="family-name">Family Name</label><input id="family-name" name="familyName" type="text" placeholder="Enter your family name"></div>
+          <div><span class="field-title">Is this information correct?</span><div class="radio-group"><label><input type="radio" name="answer2" value="yes"> Yes</label><label><input type="radio" name="answer2" value="no"> No</label></div></div>
+          <div><label for="list2">Relationship (scroll to choose)</label><select id="list2" name="relationship" size="4"><option>Parent / guardian</option><option>Sibling</option><option>Child</option><option>Partner</option><option>Other relative</option></select></div>
+          <div><label for="drop2">Preferred language</label><select id="drop2" name="language"><option>English</option><option>Welsh</option><option>French</option><option>Spanish</option><option>Other</option></select></div>
+        </div>
+      </section>
+      <hr color="#3498db" size="10">
+      <section class="form-card" aria-labelledby="form3-title">
+        <h2 id="form3-title">Form #3</h2><output style="color:#16a085" for="email">Contact details</output>
+        <div class="fields">
+          <div><label for="email">Email Address</label><input id="email" name="email" type="text" placeholder="name@example.com"></div>
+          <div><span class="field-title">May we contact you by email?</span><div class="radio-group"><label><input type="radio" name="answer3" value="yes"> Yes</label><label><input type="radio" name="answer3" value="no"> No</label></div></div>
+          <div><label for="list3">Email type (scroll to choose)</label><select id="list3" name="emailType" size="4"><option>Personal</option><option>School</option><option>Work</option><option>Shared family</option><option>Other</option></select></div>
+          <div><label for="drop3">Best time to contact</label><select id="drop3" name="contactTime"><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Any time</option></select></div>
+        </div>
+      </section>
+      <hr color="#f39c12" size="5">
+      <section class="form-card" aria-labelledby="form4-title">
+        <h2 id="form4-title">Form #4</h2><output style="color:#d35400" for="phone">Telephone details</output>
+        <div class="fields">
+          <div><label for="phone">Phone Number</label><input id="phone" name="phone" type="text" placeholder="Enter your phone number"></div>
+          <div><span class="field-title">Is this your preferred number?</span><div class="radio-group"><label><input type="radio" name="answer4" value="yes"> Yes</label><label><input type="radio" name="answer4" value="no"> No</label></div></div>
+          <div><label for="list4">Phone type (scroll to choose)</label><select id="list4" name="phoneType" size="4"><option>Mobile</option><option>Home</option><option>Work</option><option>Emergency contact</option><option>Other</option></select></div>
+          <div><label for="drop4">Country / region</label><select id="drop4" name="region"><option>United Kingdom</option><option>Ireland</option><option>Europe</option><option>North America</option><option>Other</option></select></div>
+        </div>
+      </section>
+      <hr color="#2ecc71" size="10">
+      <section class="form-card" aria-labelledby="form5-title">
+        <h2 id="form5-title">Form #5</h2><output style="color:#2980b9" for="street">Address details</output>
+        <div class="fields">
+          <div><label for="street">Street Address</label><input id="street" name="streetAddress" type="text" placeholder="House number and street"></div>
+          <div><span class="field-title">Is this your current address?</span><div class="radio-group"><label><input type="radio" name="answer5" value="yes"> Yes</label><label><input type="radio" name="answer5" value="no"> No</label></div></div>
+          <div><label for="list5">Address type (scroll to choose)</label><select id="list5" name="addressType" size="4"><option>Home</option><option>School</option><option>Work</option><option>Temporary</option><option>Other</option></select></div>
+          <div><label for="town">Town / City</label><input id="town" name="town" type="text" placeholder="Enter your town or city"></div>
+        </div>
+      </section>
+      <hr color="#9b59b6" size="5">
+      <section class="form-card" aria-labelledby="form6-title">
+        <h2 id="form6-title">Form #6</h2><output style="color:#c0392b" for="postcode">Location details</output>
+        <div class="fields">
+          <div><label for="postcode">Postcode</label><input id="postcode" name="postcode" type="text" placeholder="Enter your postcode"></div>
+          <div><span class="field-title">Can we use this address for post?</span><div class="radio-group"><label><input type="radio" name="answer6" value="yes"> Yes</label><label><input type="radio" name="answer6" value="no"> No</label></div></div>
+          <div><label for="list6">County (scroll to choose)</label><select id="list6" name="county" size="4"><option>Greater London</option><option>Kent</option><option>Essex</option><option>Surrey</option><option>Other</option></select></div>
+          <div><label for="country">Country</label><input id="country" name="country" type="text" placeholder="Enter your country"></div>
+        </div>
+      </section>
+      <hr color="#34495e" size="10">
+      <section class="form-card" aria-labelledby="form7-title">
+        <h2 id="form7-title">Form #7</h2><output style="color:#27ae60" for="birth-date">Personal information</output>
+        <div class="fields">
+          <div><label for="birth-date">Date of Birth</label><input id="birth-date" name="birthDate" type="text" placeholder="DD / MM / YYYY"></div>
+          <div><span class="field-title">Would you like to share your date of birth?</span><div class="radio-group"><label><input type="radio" name="answer7" value="yes"> Yes</label><label><input type="radio" name="answer7" value="no"> No</label></div></div>
+          <div><label for="list7">Preferred pronouns (scroll to choose)</label><select id="list7" name="pronouns" size="4"><option>She / her</option><option>He / him</option><option>They / them</option><option>Use my name</option><option>Prefer not to say</option></select></div>
+          <div><label for="nationality">Nationality</label><input id="nationality" name="nationality" type="text" placeholder="Enter your nationality"></div>
+        </div>
+      </section>
+      <hr color="#e67e22" size="5">
+      <section class="form-card" aria-labelledby="form8-title">
+        <h2 id="form8-title">Form #8</h2><output style="color:#8e44ad" for="school">Education details</output>
+        <div class="fields">
+          <div><label for="school">School / College</label><input id="school" name="school" type="text" placeholder="Enter your school or college"></div>
+          <div><span class="field-title">Are you currently studying?</span><div class="radio-group"><label><input type="radio" name="answer8" value="yes"> Yes</label><label><input type="radio" name="answer8" value="no"> No</label></div></div>
+          <div><label for="list8">Year group (scroll to choose)</label><select id="list8" name="yearGroup" size="4"><option>Year 7</option><option>Year 8</option><option>Year 9</option><option>Year 10</option><option>Year 11</option><option>Sixth form / college</option></select></div>
+          <div><label for="subject">Favourite Subject</label><input id="subject" name="subject" type="text" placeholder="Enter a subject"></div>
+        </div>
+      </section>
+      <hr color="#1abc9c" size="10">
+      <section class="form-card" aria-labelledby="form9-title">
+        <h2 id="form9-title">Form #9</h2><output style="color:#d35400" for="emergency-name">Emergency contact</output>
+        <div class="fields">
+          <div><label for="emergency-name">Emergency Contact Name</label><input id="emergency-name" name="emergencyName" type="text" placeholder="Enter their full name"></div>
+          <div><span class="field-title">May we contact this person if needed?</span><div class="radio-group"><label><input type="radio" name="answer9" value="yes"> Yes</label><label><input type="radio" name="answer9" value="no"> No</label></div></div>
+          <div><label for="list9">Relationship (scroll to choose)</label><select id="list9" name="emergencyRelationship" size="4"><option>Parent / guardian</option><option>Relative</option><option>Friend</option><option>Carer</option><option>Other</option></select></div>
+          <div><label for="emergency-phone">Emergency Contact Phone</label><input id="emergency-phone" name="emergencyPhone" type="text" placeholder="Enter their phone number"></div>
+        </div>
+      </section>
+      <hr color="#e84393" size="5">
+      <section class="form-card" aria-labelledby="form10-title">
+        <h2 id="form10-title">Form #10</h2><output style="color:#2c3e50" for="notes">Additional details</output>
+        <div class="fields">
+          <div><label for="notes">Additional Information</label><input id="notes" name="notes" type="text" placeholder="Add any relevant information"></div>
+          <div><span class="field-title">Have you completed this form?</span><div class="radio-group"><label><input type="radio" name="answer10" value="yes"> Yes</label><label><input type="radio" name="answer10" value="no"> No</label></div></div>
+          <div><label for="list10">How did you hear about us? (scroll to choose)</label><select id="list10" name="source" size="4"><option>School</option><option>Family or friend</option><option>Website</option><option>Social media</option><option>Other</option></select></div>
+          <div><label for="comments">Topic</label><input id="comments" name="topic" type="text" placeholder="Enter a topic"></div>
+        </div>
+      </section>
+      <div class="actions"><button type="Enter">Enter</button><button type="Restart">Restart</button></div>
+    </form>
+  </main>
+</body>
+</html>
